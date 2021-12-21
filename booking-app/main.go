@@ -12,8 +12,7 @@ const conferenceTickets = 50
 
 var conferenceName = "Go Conference" // is the same as conferenceName := "Go Conference" but := cannot be used on package level
 var remainingTickets uint = 50       // optionally, we can mention the type of the variable after the name like unsigned int
-// var bookings []string                // slice as opposed to fixed length array: var bookings [50]string
-var bookings = make([]UserData, 0) // list of maps
+var bookings = make([]UserData, 0)   // list of structs
 
 type UserData struct {
 	firstName       string
@@ -69,10 +68,8 @@ func greetUsers() {
 }
 
 func getFirstNames() []string {
-	firstNames := []string{}
-	// for each
-	// first variable is index but if not using it, use _ which is the blank identifier
-	for _, booking := range bookings {
+	firstNames := []string{}           // slice as opposed to fixed length array => firstNames: [50]string
+	for _, booking := range bookings { // for each: first variable is index but if not using it, use _ which is the blank identifier
 		firstNames = append(firstNames, booking.firstName)
 	}
 	return firstNames
@@ -83,7 +80,6 @@ func getUserInput() (string, string, string, uint) {
 	var lastName string
 	var email string
 	var userTickets uint
-	// ask user for their name
 	fmt.Println("Enter your first name:")
 	fmt.Scan(&firstName)
 	fmt.Println("Enter your last name:")
